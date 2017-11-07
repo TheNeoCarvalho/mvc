@@ -1,16 +1,12 @@
 <?php
 
-require '../Config/Config.php';
+require '../config/config.php';
 
-$app = new \Slim\App(["settings" => $config]);
+$app = new \Slim\App;
 
-$container = $app->getContainer();
-
-$container['view'] = new \Slim\Views\PhpRenderer("views/");
-
-$app->get('/', function($request, $response){
-    $response = $this->view->render($response, 'home.php');
-    return $response;
+$app->get('/', function (){
+    include 'views/home.php';
 });
-    
+
 $app->run();
+
